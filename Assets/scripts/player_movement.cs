@@ -48,7 +48,6 @@ public class player_movement : MonoBehaviour
 
         if (VerticalMoveValue() > SWIPE_THRESHOLD && VerticalMoveValue() > HorizontalMoveValue())
         {
-            Debug.Log("Vertical Swipe Detected!");
             if (fingerDownPos.y - fingerUpPos.y > 0)
             {
                 OnSwipeUp();
@@ -62,7 +61,6 @@ public class player_movement : MonoBehaviour
         }
         else if (HorizontalMoveValue() > SWIPE_THRESHOLD && HorizontalMoveValue() > VerticalMoveValue())
         {
-            Debug.Log("Horizontal Swipe Detected!");
             if (fingerDownPos.x - fingerUpPos.x > 0)
             {
                 OnSwipeRight();
@@ -76,7 +74,6 @@ public class player_movement : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Swipe Detected!");
         }
     }
 

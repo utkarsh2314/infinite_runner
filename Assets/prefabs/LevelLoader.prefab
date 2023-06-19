@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5ea6e8bc3ef893548b8632acf5f0610f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dfd50c2aa630e4141bc7ec0afca5e986, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4712178813121413048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 823f6be666472754c8eed6baf3a300ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 5da5596c78efc6e459700a6a781cf7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 7393489253725409110}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1170, y: 2532}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3

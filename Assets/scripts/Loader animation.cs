@@ -24,7 +24,7 @@ public class Loaderanimation : MonoBehaviour
     {
         Application.Quit();
     }
-
+        //Input.GetKeyDown(KeyCode.Escape)
     IEnumerator LoadLevel(int LevelIndex)
     {
         transition.SetTrigger("Start");

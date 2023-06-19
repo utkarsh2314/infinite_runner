@@ -7,8 +7,7 @@ public class swip_motion : MonoBehaviour
 {
     private Vector2 fingerDownPos;
     private Vector2 fingerUpPos;
-
-    public bool detectSwipeAfterRelease = true;
+    public static bool swipeLeft=false, swipeRight=false, swipeUp=false, swipeDown=false;
 
     public float SWIPE_THRESHOLD = 20f;
 
@@ -27,11 +26,7 @@ public class swip_motion : MonoBehaviour
             //Detects Swipe while finger is still moving on screen
             if (touch.phase == TouchPhase.Moved)
             {
-                if (!detectSwipeAfterRelease)
-                {
                     fingerDownPos = touch.position;
-                    DetectSwipe();
-                }
             }
 
             //Detects swipe after finger is released from screen
@@ -90,20 +85,24 @@ public class swip_motion : MonoBehaviour
     void OnSwipeUp()
     {
         Debug.Log("MOVED UP");
+        swipeUp = true;
     }
 
     void OnSwipeDown()
     {
         Debug.Log("MOVED DOWN");
+        swipeDown = true;
     }
 
     void OnSwipeLeft()
     {
         Debug.Log("MOVED LEFT");
+        swipeLeft = true;
     }
 
     void OnSwipeRight()
     {
         Debug.Log("MOVED RIGHT");
+        swipeRight = true;
     }
 }

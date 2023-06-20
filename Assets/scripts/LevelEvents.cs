@@ -36,12 +36,16 @@ public class LevelEvents : MonoBehaviour
     }
     public void ReplayGame()
     {
-        SceneManager.LoadScene(1);
         Time.timeScale = 1;
+        PlayerManager.gameOver = false;
+        SceneManager.LoadScene(1);
+
         Debug.Log("1");
     }
     public void GoToMenu()
     {
+        Time.timeScale = 1;
+        PlayerManager.gameOver = false;
         SceneManager.LoadScene(0);
     }
     public void PauseGame()

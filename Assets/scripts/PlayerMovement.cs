@@ -215,7 +215,7 @@ public class PlayerMove : MonoBehaviour
         {
             obstacleaudio.Play();
             animator.SetTrigger("collide");
-            PlayerManager.gameOver = true;
+            StartCoroutine(gameSetter());
         }
         if (hit.transform.tag == "coin")
         {
@@ -229,5 +229,10 @@ public class PlayerMove : MonoBehaviour
             coincollect.Play();
         }
     }
+    IEnumerator gameSetter()
+    {
+        yield return new WaitForSeconds(1f);
+        PlayerManager.gameOver = true;
 
-}
+    }
+    }

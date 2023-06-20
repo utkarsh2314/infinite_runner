@@ -11,6 +11,7 @@ public class Loaderanimation : MonoBehaviour
     public void MainScene ()
     {
         StartCoroutine(LoadLevel(0));
+        Debug.Log("LevelIndex");
     }
     public void GameScene ()
     {
@@ -28,7 +29,7 @@ public class Loaderanimation : MonoBehaviour
     IEnumerator LoadLevel(int LevelIndex)
     {
         transition.SetTrigger("Start");
-
+        
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(LevelIndex);

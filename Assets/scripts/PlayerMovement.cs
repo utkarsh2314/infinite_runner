@@ -14,13 +14,18 @@ public class PlayerMove : MonoBehaviour
     public float gravity = 12.0f;
     private float verticalVelocity;
     public float speed = 7.0f;
+    public float maxSpeed;
     private int desiredLane = 1;
 
+    [SerializeField] private AudioSource coincollect;
+    [SerializeField] private AudioSource obstacleaudio;
+    [SerializeField] private AudioSource jumpaudio;
 
     private Vector2 fingerDownPos;
     private Vector2 fingerUpPos;
     private bool swipeUp = false;
     private bool swipeDown = false;
+    public static bool tap = false;
 
 
     public bool detectSwipeAfterRelease = false;
@@ -43,6 +48,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (touch.phase == TouchPhase.Began)
             {
+                tap = true;
                 fingerUpPos = touch.position;
                 fingerDownPos = touch.position;
             }
@@ -65,6 +71,12 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        if (!PlayerManager.isGameStarted)
+            return;
+        if(speed < maxSpeed)
+        {
+            speed += 0.1f * Time.deltaTime;
+        }
         //Changes
         //Our future location
         Vector3 targetPosition = transform.position.z * Vector3.forward;
@@ -84,12 +96,13 @@ public class PlayerMove : MonoBehaviour
         moveVector.x = (targetPosition - transform.position).normalized.x * speed;
 
         //Y axis
-        Debug.Log(IsGrounded());
+       // Debug.Log(IsGrounded());
         if (IsGrounded())
         {
             verticalVelocity = -0.1f;
             if (swipeUp)
             {
+                jumpaudio.Play();
                 animator.SetTrigger("jump");
                 verticalVelocity = jumpForce;
             }
@@ -200,11 +213,21 @@ public class PlayerMove : MonoBehaviour
     {
         if (hit.transform.tag == "obstacle")
         {
+            obstacleaudio.Play();
             animator.SetTrigger("collide");
-            //PlayerManager.gameOver = true;
-            //FindObjectOfType<AudioManager>().PlaySound("GameOver");
+            PlayerManager.gameOver = true;
+        }
+        if (hit.transform.tag == "coin")
+        {
+            coincollect.Play();
         }
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "coin")
+        {
+            coincollect.Play();
+        }
+    }
 
 }
